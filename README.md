@@ -9,7 +9,7 @@ Reduced-Gate Convolutional LSTM Using Predictive Coding for Spatiotemporal Predi
 You can find the paper on arxiv:
 https://arxiv.org/abs/1810.07251
 
-**Description:**
+## Description:
 We introduced a novel reduced-gated convolutional LSTM (rgcLSTM) which has the same performance as convolutional LSTM (cLSTM) in RGB videos and outperforms the convolutional LSTM on gray-scale videos.
 
 
@@ -25,15 +25,19 @@ As we changed the (cLSTM)  in the Prednet to our (rgcLSTM), we name our model as
 
 Please read the comments within the code to run it.
 
-**How to run:**
+# How to run:
 
 Our model requires the same files as the model implemented by Lotter et al. 2016 (PredNet) that you can find in the following link:
 https://github.com/coxlab/prednet
 
-**Except**, replace the following file by our file in this page:
+
+## Except,
+
+replace the following file by our file in this page:
 
 
 
+## For Kitti Experiment
 **Replace:**
 
 kitti_train.py **by** kitti_train_rgcLSTM.py
@@ -48,7 +52,7 @@ The rest is the same requirements and description as in the Original PredNet , w
 
 https://github.com/coxlab/prednet
 
-**obtaining datasets**
+# obtaining datasets
 
 For Moving MNIST, you can download the dataset from:
 
@@ -64,6 +68,38 @@ You can use any other gray-scale video or RGB video.
 
 
 
+
+
+
+# New Files added:
+## These files to help in replicating the MNIST experiment
+
+**These are new file that are uploaded into this directory**
+
+> numpy_to_hkl.py
+This file is a straight forward converter .npy file into .hkl 
+This file could be used to prepare the mnist dataset training, testing and validation sets. 
+In this file you should adjust the size of each of the datasets individually as this file builds only one file per time.
+It is very simple and easy to use. Please follow the comments within the code script.
+
+> mnist_kitti_train_rgcLSTM.py
+The training file for MNIST dataset. All paramentes are adjusted for the experiment
+
+> mnist_pred_rgcLSTM.py
+The Pred-rgcLSTM file that adjusted for MNIST dataset size. All paramentes are adjusted for the experiment 
+
+> mnist_evaluate_rgcLSTM.py
+The evaluate file of rgcLSTM model for MNIST dataset size. All paramentes are adjusted for the experiment.
+
+
+
+# Note: 
+You still need to replace 
+keras.util.py  **by** keras.util.rgcLSTM
+as mentioned above in the KITTI dataset experiment. 
+
+
+# Reminder
 Please if you will use our code, do not forget to **cite both** our paper and the original Prednet:
 
 @article{elsayed2018reduced,
